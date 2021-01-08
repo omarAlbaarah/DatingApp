@@ -1,4 +1,8 @@
 {
+  "typedef": [
+    false,
+    "call-signature"
+  ],
   "extends": "tslint:recommended",
   "rulesDirectory": [
     "codelyzer"

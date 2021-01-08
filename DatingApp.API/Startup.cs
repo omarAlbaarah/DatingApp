@@ -16,6 +16,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
+
+
 namespace DatingApp.API
 {
     public class Startup
@@ -30,8 +32,9 @@ namespace DatingApp.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+              
             services.AddCors();
-            services.AddDbContext<DataContext>(x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<DataContext>(x => x.UseSqlite("Data Source=DatingApp.db"));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddScoped<IAuthRepository,AuthRepository>();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -40,7 +43,7 @@ namespace DatingApp.API
                 {
                     ValidateIssuerSigningKey = true,
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII
-                    .GetBytes(Configuration.GetSection("AppSettings:Token").Value)),
+                    .GetBytes("super security key")),
                     ValidateIssuer = false,
                     ValidateAudience = false
 
@@ -60,8 +63,9 @@ namespace DatingApp.API
                 // app.UseHsts();
             }
 
-            // app.UseHttpsRedirection();
-            app.UseCors(x => x.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+             // app.UseHttpsRedirection();
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+          
             app.UseAuthentication();
             app.UseMvc();
         }
