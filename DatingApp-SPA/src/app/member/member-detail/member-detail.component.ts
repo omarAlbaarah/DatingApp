@@ -11,7 +11,7 @@ import { UserService } from 'src/app/_services/user.service';
   styleUrls: ['./member-detail.component.scss']
 })
 export class MemberDetailComponent implements OnInit {
-  user!: User;
+  public user: User;
   galleryOptions: NgxGalleryOptions[] = [
     {
       width: '500px',
@@ -37,8 +37,7 @@ export class MemberDetailComponent implements OnInit {
   }
   getImages(){
     const imageUrls = [];
-      // tslint:disable-next-line:prefer-for-of
-    for (let i = 0; i < this.user?.photos.length; i++) {
+    for (let i = 0; i < this.user?.photos?.length; i++) {
         imageUrls.push({
           small: this.user?.photos[i]?.url,
           medium: this.user?.photos[i]?.url,
