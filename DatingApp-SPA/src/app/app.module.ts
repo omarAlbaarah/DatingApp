@@ -7,6 +7,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { NgxGalleryModule } from 'ngx-gallery-9';
+import { FileUploadModule } from 'ng2-file-upload';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -15,8 +16,6 @@ import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { ErrorInterceptorProvider } from './_services/error.Interceptor';
 import { AlertifyService } from './_services/alertify.service';
-
-
 import { MemberListComponent } from './member/member-list/member-list.component';
 import { ListComponent } from './list/list.component';
 import { MessagesComponent } from './messages/messages.component';
@@ -31,6 +30,8 @@ import { MemberListResolver } from './_resolvers/member-list.resolver';
 import { MemberEditComponent } from './member/member-edit/member-edit.component';
 import { MemberEditResolver } from './_resolvers/member-edit.resolver';
 import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
+import { PhotoEditorComponent } from './member/photo-editor/photo-editor.component';
+
 
 
 export function tokenGetter(){
@@ -49,7 +50,8 @@ export function tokenGetter(){
       MessagesComponent,
       MemberCardComponent,
       MemberDetailComponent,
-      MemberEditComponent
+      MemberEditComponent,
+      PhotoEditorComponent
    ],
   imports: [
     BrowserModule,
@@ -59,6 +61,7 @@ export function tokenGetter(){
     BsDropdownModule.forRoot(),
     RouterModule.forRoot(appRoute),
     NgxGalleryModule,
+    FileUploadModule,
     TabsModule.forRoot(),
     JwtModule.forRoot({
       config: {

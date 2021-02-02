@@ -32,6 +32,7 @@ namespace DatingApp.API
         {
               
             services.AddCors();
+            services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
             services.AddAutoMapper();
             services.AddDbContext<DataContext>(x => x.UseSqlite("Data Source=DatingApp.db"));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
